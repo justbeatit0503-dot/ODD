@@ -1,0 +1,22 @@
+{
+  "name": "knowgram",
+  "owner": {
+    "name": "Knowgram",
+    "url": "https://github.com/justbeatit0503-dot"
+  },
+  "description": "노우그램(Knowgram) 전용 Claude 플러그인 모음",
+  "plugins": [
+    {
+      "name": "pyramid-thinking",
+      "source": "./plugins/pyramid-thinking",
+      "description": "피라미드 사고법(L0~L3) 상시 사고 프레임 + pyramid-lens 심층 분석 스킬 + 세션 시작 시 원문 주입 훅",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": [
+        "thinking-framework",
+        "ontology",
+        "analysis"
+      ]
+    }
+  ]
+}
