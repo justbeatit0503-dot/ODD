@@ -70,7 +70,7 @@ plugins/pyramid-thinking/
 `dist/pyramid-thinking.plugin`은 `plugins/pyramid-thinking` 폴더를 압축한 업로드용 파일입니다. 폴더를 고치면 다시 압축해 갱신하세요:
 
 ```bash
-cd plugins/pyramid-thinking && zip -r ../../dist/pyramid-thinking.plugin . -x "*.DS_Store"
+rm -f dist/pyramid-thinking.plugin && (cd plugins/pyramid-thinking && zip -r ../../dist/pyramid-thinking.plugin . -x "*.DS_Store")
 ```
 
 원문을 고칠 때는 `references/ontology.md` 한 곳만 수정하면 훅과 스킬에 함께 반영됩니다.
