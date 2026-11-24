@@ -21,7 +21,7 @@ Claude.ai 웹 채팅, Claude 데스크톱(Chat·Cowork), Claude Code 어디서�
 3. 목록에 뜬 **pyramid-thinking** 설치
 
 계정에 저장되므로 웹 채팅, 데스크톱, Cowork, Claude Code(로그인 계정이 같을 때)에서 다시 설치하지 않아도 따라옵니다.
-레포 대신 [Releases](https://github.com/justbeatit0503-dot/ODD/releases)의 `pyramid-thinking.plugin` 파일을 **Add → Upload plugin**으로 올려도 됩니다.
+레포 대신 [`dist/pyramid-thinking.plugin`](https://github.com/justbeatit0503-dot/ODD/raw/main/dist/pyramid-thinking.plugin) 파일을 내려받아 **Add → Upload plugin**으로 올려도 됩니다.
 
 ### Claude Code (CLI)
 
@@ -52,6 +52,7 @@ Claude Code 2.1.275 이상이면 한 줄로도 됩니다: `/plugin install pyram
 
 ```
 .claude-plugin/marketplace.json        # 마켓플레이스 정의 (이름: knowgram)
+dist/pyramid-thinking.plugin           # 업로드용 패키지
 plugins/pyramid-thinking/
 ├── .claude-plugin/plugin.json
 ├── hooks/
@@ -64,6 +65,12 @@ plugins/pyramid-thinking/
     └── pyramid-lens/
         ├── SKILL.md
         └── references/lenses.md
+```
+
+`dist/pyramid-thinking.plugin`은 `plugins/pyramid-thinking` 폴더를 압축한 업로드용 파일입니다. 폴더를 고치면 다시 압축해 갱신하세요:
+
+```bash
+cd plugins/pyramid-thinking && zip -r ../../dist/pyramid-thinking.plugin . -x "*.DS_Store"
 ```
 
 원문을 고칠 때는 `references/ontology.md` 한 곳만 수정하면 훅과 스킬에 함께 반영됩니다.
