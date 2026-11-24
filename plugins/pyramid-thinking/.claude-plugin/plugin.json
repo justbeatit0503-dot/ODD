@@ -1,7 +1,7 @@
 {
   "name": "pyramid-thinking",
-  "version": "0.1.0",
-  "description": "피라미드 사고법(L0 존재론 → L1 구조 → L2 로직 → L3 실행). 상시 사고 프레임 + pyramid-lens 심층 분석 스킬 + 세션마다 원문을 주입하는 훅.",
+  "version": "0.4.2",
+  "description": "피라미드 사고법(L0 존재론 → L1 구조 → L2 선택 → L3 실행). 상시 사고 프레임 + pyramid-lens 심층 분석 스킬 + 세션마다 원문을 주입하는 훅.",
   "author": {
     "name": "Knowgram",
     "url": "https://github.com/justbeatit0503-dot"

@@ -10,7 +10,7 @@
       "name": "pyramid-thinking",
       "source": "./plugins/pyramid-thinking",
       "description": "피라미드 사고법(L0~L3) 상시 사고 프레임 + pyramid-lens 심층 분석 스킬 + 세션 시작 시 원문 주입 훅",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "category": "productivity",
       "tags": [
         "thinking-framework",

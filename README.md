@@ -1,6 +1,6 @@
 # pyramid-thinking — 피라미드 사고법 Claude 플러그인
 
-수평으로 흩어진 지식(How-to, 데이터)을 **L0 존재론 → L1 구조 → L2 로직·트레이드오프 → L3 실행**의
+수평으로 흩어진 지식(How-to, 데이터)을 **L0 존재론 → L1 구조 → L2 선택·트레이드오프 → L3 실행**의
 4단계 수직 위계로 정돈하는 사고 프레임을 Claude에 심는 플러그인입니다.
 Claude.ai 웹 채팅, Claude 데스크톱(Chat·Cowork), Claude Code 어디서든 같은 레포에서 설치할 수 있습니다.
 
@@ -8,9 +8,9 @@ Claude.ai 웹 채팅, Claude 데스크톱(Chat·Cowork), Claude Code 어디서�
 
 | 구성 | 이름 | 하는 일 |
 |---|---|---|
-| 스킬 | `pyramid-thinking` | 지식·방법론·업무 실행이 걸린 요청마다 L0~L3 프레임으로 생각을 정렬하는 상시 사고법. 원문 전체는 `references/ontology.md` |
-| 스킬 | `pyramid-lens` | 현상·전략·제품·사건을 L0~L3로 분해하고 원형적 렌즈(성경·신화·열역학·진화·면역계·전쟁사·연금술)에 교차 매핑해 상체/하체 결합을 진단하는 심층 분석법 |
-| 훅 | `SessionStart` | 세션 시작·재개·`/clear`·컨텍스트 압축 때마다 피라미드 사고법 원문을 컨텍스트에 주입 (시스템 프롬프트처럼 매번 강제) |
+| 스킬 | `pyramid-thinking` | 단순하지 않은 요청(여러 단계, 실제 트레이드오프, 모호한 목표, 충돌하는 요구)에서만 목적 → 구조 → 선택 → 실행으로 정렬하는 사고법. 먼저 쓸지 판단하고, 단순 질문은 바로 답한다. 계획·티켓·에이전트 지시서를 낼 때는 항목마다 관찰 가능한 완료 판정·범위·경계를 붙인다. 정의는 `references/ontology.md` |
+| 스킬 | `pyramid-lens` | 현상·전략·제품·사건을 L0~L3로 분해하고 원리 렌즈(성경·신화·열역학·진화·면역계·전쟁사·연금술)에 교차 매핑해 방향층/작동층 결합을 진단하는 심층 분석법 |
+| 훅 | `SessionStart` | 세션 시작·재개·`/clear`·컨텍스트 압축 때마다 짧은 핵심(`references/core.md`, 약 5.5KB)만 컨텍스트에 주입. 쓸지 판단하는 기준과 최소 절차만 담는다 |
 
 ## 설치
 
@@ -44,7 +44,7 @@ Claude Code 2.1.275 이상이면 한 줄로도 됩니다: `/plugin install pyram
 | Claude.ai 웹 채팅 · 데스크톱 Chat 탭 | O | X (채팅에서는 훅이 실행되지 않음) |
 
 채팅 환경에서는 `pyramid-thinking` 스킬이 관련 요청마다 불려와 훅의 역할을 대신합니다.
-채팅에서도 매 턴 무조건 적용되길 원하면 `references/ontology.md` 원문을 **Settings → Profile**의 개인 선호(personal preferences)에 함께 넣어 두세요.
+채팅에서도 매 턴 무조건 적용되길 원하면 `references/core.md` 내용을 **Settings → Profile**의 개인 선호(personal preferences)에 함께 넣어 두세요.
 
 이미 계정에 `pyramid-lens`를 단독 스킬로 올려 두었다면 같은 스킬이 두 번 보이니 하나는 꺼 두는 것이 좋습니다.
 
@@ -57,11 +57,13 @@ plugins/pyramid-thinking/
 ├── .claude-plugin/plugin.json
 ├── hooks/
 │   ├── hooks.json                     # SessionStart 등록
-│   └── session-start.sh               # 원문을 stdout으로 주입
+│   └── session-start.sh               # core.md를 stdout으로 주입
 └── skills/
     ├── pyramid-thinking/
     │   ├── SKILL.md
-    │   └── references/ontology.md     # 피라미드 사고법 원문 (훅과 스킬이 함께 쓰는 단일 원본)
+    │   └── references/core.md         # 훅이 주입하는 짧은 핵심 (판단 기준 + 최소 절차)
+    │       ├── references/ontology.md     # 정의와 원리 (필요할 때만 읽음)
+    │       └── references/examples.md     # 분야별 예시 (필요할 때만 읽음)
     └── pyramid-lens/
         ├── SKILL.md
         └── references/lenses.md
@@ -73,7 +75,7 @@ plugins/pyramid-thinking/
 rm -f dist/pyramid-thinking.plugin && (cd plugins/pyramid-thinking && zip -r ../../dist/pyramid-thinking.plugin . -x "*.DS_Store")
 ```
 
-원문을 고칠 때는 `references/ontology.md` 한 곳만 수정하면 훅과 스킬에 함께 반영됩니다.
+상시 요약을 고칠 때는 `references/core.md`를, 정의를 고칠 때는 `references/ontology.md`를 수정합니다. 두 파일의 용어가 어긋나지 않게 함께 확인하세요.
 수정 후에는 `plugin.json`과 `marketplace.json`의 `version`을 올려야 설치된 곳에서 업데이트로 인식합니다.
 
 ## 라이선스
